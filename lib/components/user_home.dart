@@ -3,6 +3,7 @@ import 'package:crud_projetoi_lista/database/db_cmd.dart';
 import 'package:crud_projetoi_lista/models/contato.dart';
 import 'package:flutter/material.dart';
 import 'package:path/path.dart';
+import 'package:flutter_masked_text2/flutter_masked_text2.dart';
 
 class UserHome extends StatefulWidget {
   @override
@@ -34,9 +35,10 @@ class _UserHomeState extends State<UserHome> {
       appBar: AppBar(
         title: Text('Lista de Contatos'),
         actions: <Widget>[
-          IconButton(
-            icon: Icon(Icons.add),
-            color: Colors.white,
+          TextButton.icon(
+            //adicionar contato
+            icon: Icon(Icons.add, color: Colors.white),
+            label: Text('ADD', style: TextStyle(color: Colors.white)),
             onPressed: () async {
               final newContato = await Navigator.push(
                 context,
@@ -48,6 +50,12 @@ class _UserHomeState extends State<UserHome> {
               );
               if (newContato != null) {
                 await comando.create(newContato);
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(
+                    content: Text('Contato adicionado com sucesso!'),
+                    backgroundColor: Colors.black,
+                  ),
+                );
                 _refreshContatos();
               }
             },
@@ -93,6 +101,13 @@ class _UserHomeState extends State<UserHome> {
                                       ));
                                   if (updatedContato != null) {
                                     await comando.update(updatedContato);
+                                    ScaffoldMessenger.of(context).showSnackBar(
+                                      SnackBar(
+                                        content: Text(
+                                            'Contato editado com sucesso!'),
+                                        backgroundColor: Colors.black,
+                                      ),
+                                    );
                                     _refreshContatos();
                                   }
                                 }),
@@ -101,6 +116,14 @@ class _UserHomeState extends State<UserHome> {
                                 color: Colors.red,
                                 onPressed: () async {
                                   await comando.delete(contato.id!);
+
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                    SnackBar(
+                                      content:
+                                          Text('Contato deletado com sucesso!'),
+                                      backgroundColor: Colors.black,
+                                    ),
+                                  );
                                   _refreshContatos();
                                 })
                           ],
