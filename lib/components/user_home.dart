@@ -125,7 +125,7 @@ class _UserHomeState extends State<UserHome> {
                                     ),
                                   );
                                   _refreshContatos();
-                                })
+                                }) // deletar contato
                           ],
                         ),
                       ),
