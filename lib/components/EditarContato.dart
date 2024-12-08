@@ -38,7 +38,7 @@ class _EditarContatoState extends State<EditarContato> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(title: Text('Editando contato')),
+        appBar: AppBar(title: Text('Insira as informações')),
         body: Padding(
             padding: const EdgeInsets.all(16.0),
             child: Form(

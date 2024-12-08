@@ -86,6 +86,7 @@ class _UserHomeState extends State<UserHome> {
                         title: Text(contato.nome),
                         subtitle: Text(
                             'Email: ${contato.email}\nTelefone: ${contato.telefone}'),
+                        // ontap para abrir a pagina do contato => construir
                         trailing: Row(
                           mainAxisSize: MainAxisSize.min,
                           children: <Widget>[
@@ -125,7 +126,7 @@ class _UserHomeState extends State<UserHome> {
                                     ),
                                   );
                                   _refreshContatos();
-                                })
+                                }) // contato deletado
                           ],
                         ),
                       ),
